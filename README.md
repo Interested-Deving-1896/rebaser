@@ -1,93 +1,75 @@
-# Rebaser
+[update-readmes]   Mode: rewrite — migrating to template structure...
+# rebaser
 
-[![Build status](https://github.com/martincostello/rebaser/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/martincostello/rebaser/actions/workflows/build.yml?query=branch%3Amain+event%3Apush)
-[![codecov](https://codecov.io/gh/martincostello/rebaser/branch/main/graph/badge.svg)](https://codecov.io/gh/martincostello/rebaser)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/martincostello/rebaser/badge)](https://securityscorecards.dev/viewer/?uri=github.com/martincostello/rebaser)
+[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/rebaser)
 
-A GitHub Action that rebases the current branch onto another branch, attempting to
-automatically resolve any merge conflicts caused by conflicting dependencies. In the
-event of a conflicting dependency, the highest version of the dependency is always chosen.
+<!-- AI:start:what-it-does -->
+_Description pending._
+<!-- AI:end:what-it-does -->
 
-Its functionality is based on [this small .NET command-line application][rebaser-csharp].
+## Architecture
 
-## Example Usage
+<!-- AI:start:architecture -->
+_Architecture documentation pending._
+<!-- AI:end:architecture -->
 
-```yml
-steps:
-- uses: actions/checkout@v5
-  with:
-    ref: 'my-branch'
-    fetch-depth: 0
-- uses: martincostello/rebaser@v2
+## Install
+
+<!-- Add installation instructions here. This section is yours — the AI will not modify it. -->
+
+```bash
+git clone https://github.com/Interested-Deving-1896/rebaser.git
+cd rebaser
 ```
 
-### Example Workflow
+## Usage
 
-```yml
-name: rebase
+<!-- Add usage examples here. This section is yours — the AI will not modify it. -->
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        required: true
-        type: string
+## Configuration
 
-permissions:
-  contents: write
+<!-- Document configuration options here. This section is yours — the AI will not modify it. -->
 
-jobs:
-  rebase:
-    runs-on: [ ubuntu-latest ]
+## CI
 
-    concurrency:
-      group: "rebase-${{ inputs.branch }}"
-      cancel-in-progress: false
+<!-- AI:start:ci -->
+_CI documentation pending._
+<!-- AI:end:ci -->
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          ref: ${{ inputs.branch }}
+## Mirror chain
 
-      - name: Rebase ${{ inputs.branch }}
-        uses: martincostello/rebaser@v1
-        id: rebase
+<!-- AI:start:mirror-chain -->
+This repo is maintained in [`Interested-Deving-1896/rebaser`](https://github.com/Interested-Deving-1896/rebaser) and mirrored through:
 
-      - name: Push changes
-        if : ${{ steps.rebase.outputs.result == 'success' }}
-        run: git push --force-with-lease origin ${{ inputs.branch }}
+```
+Interested-Deving-1896/rebaser  ──►  OpenOS-Project-OSP/rebaser  ──►  OpenOS-Project-Ecosystem-OOC/rebaser
 ```
 
-## Inputs
+Changes flow downstream automatically via the hourly mirror chain in
+[`fork-sync-all`](https://github.com/Interested-Deving-1896/fork-sync-all).
+Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-Deving-1896`.
+<!-- AI:end:mirror-chain -->
 
-| **Name** | **Description** | **Default** |
-|:--|:--|:--|
-| `branch` | The branch to rebase the current branch onto. | `github.event.repository.default_branch` |
-| `repository` | The path of the repository to rebase. | `'.'` |
-| `user-email` | The optional email address to use for Git commit(s). | `github-actions[bot]@users.noreply.github.com` |
-| `user-name` | The optional user name to use for Git commit(s). | `github-actions[bot]` |
+## Contributors
 
-## Outputs
+<!-- AI:start:contributors -->
+_Contributors pending._
+<!-- AI:end:contributors -->
 
-| **Name** | **Description** |
-|:--|:--|
-| `result` | The result of attempting to rebase the branch. The value is one of: `upToDate`, `success`, `conflicts` or `error`. |
+## Origins
 
-## Feedback
+<!-- AI:start:origins -->
+_Original project — no upstream fork._
+<!-- AI:end:origins -->
 
-Any feedback or issues can be added to the issues for this project in [GitHub][issues].
+## Resources
 
-## Repository
-
-The repository is hosted in [GitHub][rebaser]: <https://github.com/martincostello/rebaser.git>
+<!-- AI:start:resources -->
+_No additional resource files found._
+<!-- AI:end:resources -->
 
 ## License
 
-This project is licensed under the [Apache 2.0][license] license.
-
-[issues]: https://github.com/martincostello/rebaser/issues
-[license]: https://www.apache.org/licenses/LICENSE-2.0.txt
-[rebaser]: https://github.com/martincostello/rebaser
-[rebaser-csharp]: https://github.com/martincostello/github-automation/blob/a28ef23bbc47711c136b5011a0ec654b935df4c8/src/Rebaser/Program.cs
+<!-- AI:start:license -->
+[Apache-2.0](https://github.com/Interested-Deving-1896/rebaser/blob/main/LICENSE) © 2026 [Interested-Deving-1896](https://github.com/Interested-Deving-1896)
+<!-- AI:end:license -->
